@@ -13,6 +13,7 @@ public class LeagueInvaders {
 	LeagueInvaders() {
 		frame = new JFrame();
 		GP = new GamePanel();
+		frame.addKeyListener(GP);
 	}
 	
 	void setup() {
