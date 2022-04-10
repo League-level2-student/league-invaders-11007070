@@ -22,7 +22,17 @@ public class ObjectManager {
 	}
 	
 	void purgeObjects() {
+		for (int i = 0; i < aliens.size(); i++) {
+			if (aliens.get(i).isActive == false) {
+				aliens.remove(i);
+			}
+		}
 		
+		for (int i = 0; i < projectiles.size(); i++) {
+			if (projectiles.get(i).isActive == false) {
+				projectiles.remove(i);
+			}
+		}
 	}
 	
 	void update() {
