@@ -61,11 +61,10 @@ public class ObjectManager implements ActionListener{
 		}
 	}
 	
-	addAlien();
 }
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		addAlien();
 	}}
