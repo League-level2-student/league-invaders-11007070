@@ -52,7 +52,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		
 	}
 	void updateGameState() {  
-		objectManager.update();
+		//objectManager.update();
+		if (rocketship.isActive == false) {
+			currentState = END;
+		}
 	}
 	void updateEndState()  {  
 		
@@ -120,7 +123,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		    updateMenuState();
 		}else if(currentState == GAME){
 		    updateGameState();
-		    startGame();
 		}else if(currentState == END){
 		    updateEndState();
 		    alienSpawn.stop();
@@ -133,6 +135,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 			if (currentState == END) {
 				currentState = MENU;
+			}
+			else if (currentState == MENU) {
+				currentState = GAME;
+				startGame();
 			}
 			else {
 				currentState++;
