@@ -53,7 +53,7 @@ public class ObjectManager implements ActionListener{
 	for (int i = 0; i < aliens.size(); i++) {
 		aliens.get(i).update();
 		aliens.get(i).draw(g);
-		if (aliens.get(i).y > LeagueInvaders.HEIGHT || aliens.get(i).y < LeagueInvaders.HEIGHT) {
+		if (aliens.get(i).y > LeagueInvaders.HEIGHT) {
 			aliens.get(i).isActive = false;
 		}
 	}
@@ -61,7 +61,7 @@ public class ObjectManager implements ActionListener{
 	for (int i = 0; i < projectiles.size(); i++) {
 		projectiles.get(i).update();
 		projectiles.get(i).draw(g);
-		if (projectiles.get(i).y > LeagueInvaders.HEIGHT || projectiles.get(i).y < LeagueInvaders.HEIGHT) {
+		if (projectiles.get(i).y < 0) {
 			projectiles.get(i).isActive = false;
 		}
 	}
@@ -71,7 +71,8 @@ public class ObjectManager implements ActionListener{
 	void checkCollision() {
 		for (int i = 0; i < aliens.size(); i++) {
 			for (int j = 0; j < projectiles.size(); j++) {
-				if (rocket.collisionBox.intersects(aliens.get(i).collisionBox) || projectiles.get(j).collisionBox.intersects(aliens.get(i).collisionBox)) {
+				if (projectiles.get(j).collisionBox.intersects(aliens.get(i).collisionBox)) {
+					System.out.println("hit");
 					aliens.get(i).isActive = false;
 					projectiles.get(j).isActive = false;
 				}
