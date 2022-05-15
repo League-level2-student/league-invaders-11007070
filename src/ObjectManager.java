@@ -10,6 +10,7 @@ public class ObjectManager implements ActionListener{
 	ArrayList<Alien> aliens = new ArrayList<Alien>();
 	Random random = new Random();
 	Graphics g;
+	int score = 0;
 	
 	ObjectManager (Rocketship r) {
 		rocket = r;
@@ -68,6 +69,10 @@ public class ObjectManager implements ActionListener{
 	
 	}
 	
+	public int getScore() {
+		return score;
+	}
+	
 	void checkCollision() {
 		for (int i = 0; i < aliens.size(); i++) {
 			for (int j = 0; j < projectiles.size(); j++) {
@@ -75,6 +80,7 @@ public class ObjectManager implements ActionListener{
 					System.out.println("hit");
 					aliens.get(i).isActive = false;
 					projectiles.get(j).isActive = false;
+					score++;
 				}
 			}
 		}
